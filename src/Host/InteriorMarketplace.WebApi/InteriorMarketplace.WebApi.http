@@ -1,0 +1,6 @@
+@InteriorMarketplace.WebApi_HostAddress = http://localhost:5218
+
+GET {{InteriorMarketplace.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

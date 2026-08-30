@@ -1,0 +1,11 @@
+F:\interior\backend\src\BuildingBlocks\Domain\bin\Debug\net10.0\BuildingBlocks.Domain.deps.json
+F:\interior\backend\src\BuildingBlocks\Domain\bin\Debug\net10.0\BuildingBlocks.Domain.dll
+F:\interior\backend\src\BuildingBlocks\Domain\bin\Debug\net10.0\BuildingBlocks.Domain.pdb
+F:\interior\backend\src\BuildingBlocks\Domain\obj\Debug\net10.0\BuildingBlocks.Domain.GeneratedMSBuildEditorConfig.editorconfig
+F:\interior\backend\src\BuildingBlocks\Domain\obj\Debug\net10.0\BuildingBlocks.Domain.AssemblyInfoInputs.cache
+F:\interior\backend\src\BuildingBlocks\Domain\obj\Debug\net10.0\BuildingBlocks.Domain.AssemblyInfo.cs
+F:\interior\backend\src\BuildingBlocks\Domain\obj\Debug\net10.0\BuildingBlocks.Domain.csproj.CoreCompileInputs.cache
+F:\interior\backend\src\BuildingBlocks\Domain\obj\Debug\net10.0\BuildingBlocks.Domain.dll
+F:\interior\backend\src\BuildingBlocks\Domain\obj\Debug\net10.0\refint\BuildingBlocks.Domain.dll
+F:\interior\backend\src\BuildingBlocks\Domain\obj\Debug\net10.0\BuildingBlocks.Domain.pdb
+F:\interior\backend\src\BuildingBlocks\Domain\obj\Debug\net10.0\ref\BuildingBlocks.Domain.dll

@@ -1,0 +1,84 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "VendorOffers.Application/1.0.0": {
+        "dependencies": {
+          "BuildingBlocks.Application": "1.0.0",
+          "Projects.Application": "1.0.0",
+          "VendorOffers.Domain": "1.0.0"
+        },
+        "runtime": {
+          "VendorOffers.Application.dll": {}
+        }
+      },
+      "BuildingBlocks.Application/1.0.0": {
+        "runtime": {
+          "BuildingBlocks.Application.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Projects.Application/1.0.0": {
+        "dependencies": {
+          "BuildingBlocks.Application": "1.0.0",
+          "Projects.Domain": "1.0.0"
+        },
+        "runtime": {
+          "Projects.Application.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Projects.Domain/1.0.0": {
+        "runtime": {
+          "Projects.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "VendorOffers.Domain/1.0.0": {
+        "runtime": {
+          "VendorOffers.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "VendorOffers.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BuildingBlocks.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Projects.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Projects.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "VendorOffers.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

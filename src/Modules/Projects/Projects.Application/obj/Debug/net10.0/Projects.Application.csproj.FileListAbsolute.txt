@@ -1,0 +1,17 @@
+F:\interior\backend\src\Modules\Projects\Projects.Application\bin\Debug\net10.0\Projects.Application.deps.json
+F:\interior\backend\src\Modules\Projects\Projects.Application\bin\Debug\net10.0\Projects.Application.dll
+F:\interior\backend\src\Modules\Projects\Projects.Application\bin\Debug\net10.0\Projects.Application.pdb
+F:\interior\backend\src\Modules\Projects\Projects.Application\bin\Debug\net10.0\BuildingBlocks.Application.dll
+F:\interior\backend\src\Modules\Projects\Projects.Application\bin\Debug\net10.0\Projects.Domain.dll
+F:\interior\backend\src\Modules\Projects\Projects.Application\bin\Debug\net10.0\Projects.Domain.pdb
+F:\interior\backend\src\Modules\Projects\Projects.Application\bin\Debug\net10.0\BuildingBlocks.Application.pdb
+F:\interior\backend\src\Modules\Projects\Projects.Application\obj\Debug\net10.0\Projects.Application.csproj.AssemblyReference.cache
+F:\interior\backend\src\Modules\Projects\Projects.Application\obj\Debug\net10.0\Projects.Application.GeneratedMSBuildEditorConfig.editorconfig
+F:\interior\backend\src\Modules\Projects\Projects.Application\obj\Debug\net10.0\Projects.Application.AssemblyInfoInputs.cache
+F:\interior\backend\src\Modules\Projects\Projects.Application\obj\Debug\net10.0\Projects.Application.AssemblyInfo.cs
+F:\interior\backend\src\Modules\Projects\Projects.Application\obj\Debug\net10.0\Projects.Application.csproj.CoreCompileInputs.cache
+F:\interior\backend\src\Modules\Projects\Projects.Application\obj\Debug\net10.0\Projects.B93E3F40.Up2Date
+F:\interior\backend\src\Modules\Projects\Projects.Application\obj\Debug\net10.0\Projects.Application.dll
+F:\interior\backend\src\Modules\Projects\Projects.Application\obj\Debug\net10.0\refint\Projects.Application.dll
+F:\interior\backend\src\Modules\Projects\Projects.Application\obj\Debug\net10.0\Projects.Application.pdb
+F:\interior\backend\src\Modules\Projects\Projects.Application\obj\Debug\net10.0\ref\Projects.Application.dll

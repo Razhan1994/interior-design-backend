@@ -1,0 +1,30 @@
+@host = http://localhost:5000
+@projectId = aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
+@elementId = REPLACE_ELEMENT_ID
+@offerId = REPLACE_OFFER_ID
+
+### توکن مالک
+POST {{host}}/api/auth/dev-token
+Content-Type: application/json
+
+{"role":"Homeowner"}
+
+### توکن فروشنده (accessToken را در متغیر vendorToken قرار دهید)
+POST {{host}}/api/auth/dev-token
+Content-Type: application/json
+
+{"role":"Vendor"}
+
+### پروژه‌های منتشرشده
+GET {{host}}/api/projects/published
+
+### ایجاد پیشنهاد
+POST {{host}}/api/projects/{{projectId}}/elements/{{elementId}}/offers
+Authorization: Bearer {{vendorToken}}
+Content-Type: application/json
+
+{"price":42000000,"deliveryDays":14,"note":"تحویل و نصب رایگان","productImageUrl":"https://example.com/sofa.jpg"}
+
+### پذیرش پیشنهاد
+POST {{host}}/api/projects/{{projectId}}/elements/{{elementId}}/offers/{{offerId}}/accept
+Authorization: Bearer {{homeownerToken}}

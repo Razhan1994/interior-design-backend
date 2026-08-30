@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup><ProjectReference Include="..\Projects.Application\Projects.Application.csproj" /><ProjectReference Include="..\Projects.Domain\Projects.Domain.csproj" /><ProjectReference Include="..\..\VendorOffers\VendorOffers.Application\VendorOffers.Application.csproj" /><ProjectReference Include="..\..\VendorOffers\VendorOffers.Domain\VendorOffers.Domain.csproj" /><ProjectReference Include="..\..\Identity\Identity.csproj" /><ProjectReference Include="..\..\..\BuildingBlocks\Application\BuildingBlocks.Application.csproj" /></ItemGroup>
+  <ItemGroup><PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.1"><PrivateAssets>all</PrivateAssets></PackageReference><PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.0" /></ItemGroup>
+</Project>
