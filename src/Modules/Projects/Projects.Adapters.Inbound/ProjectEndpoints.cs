@@ -3,21 +3,118 @@ using InteriorMarketplace.Modules.Projects.Application;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
+
 namespace InteriorMarketplace.Modules.Projects.Adapters.Inbound;
-public sealed record ProjectRequest(string Title,string RoomImageUrl);
-public sealed record ElementRequest(string Category,string Title,string? Description,string? Dimensions,string? Color,decimal? TargetBudget,decimal X,decimal Y,decimal Width,decimal Height)
-{public ElementInput ToInput()=>new(Category,Title,Description,Dimensions,Color,TargetBudget,X,Y,Width,Height);}
-public sealed class ProjectRequestValidator:AbstractValidator<ProjectRequest>{public ProjectRequestValidator(){RuleFor(x=>x.Title).NotEmpty().MaximumLength(200);RuleFor(x=>x.RoomImageUrl).NotEmpty().MaximumLength(1000);}}
+
 public static class ProjectEndpoints
 {
- public static IEndpointRouteBuilder MapProjectEndpoints(this IEndpointRouteBuilder app){var g=app.MapGroup("/api/projects").RequireAuthorization();
- g.MapPost("/",async(ProjectRequest r,IValidator<ProjectRequest> v,ProjectService s,CancellationToken ct)=>{await v.ValidateAndThrowAsync(r,ct);return Results.Created("",await s.CreateProject(r.Title,r.RoomImageUrl,ct));}).RequireAuthorization(p=>p.RequireRole("Homeowner","Admin"));
- g.MapPut("/{id:guid}",async(Guid id,ProjectRequest r,ProjectService s,CancellationToken ct)=>Results.Ok(await s.UpdateProject(id,r.Title,r.RoomImageUrl,ct)));
- g.MapPost("/{id:guid}/elements",async(Guid id,ElementRequest r,ProjectService s,CancellationToken ct)=>Results.Ok(await s.AddProjectElement(id,r.ToInput(),ct)));
- g.MapPut("/{id:guid}/elements/{elementId:guid}",async(Guid id,Guid elementId,ElementRequest r,ProjectService s,CancellationToken ct)=>Results.Ok(await s.UpdateProjectElement(id,elementId,r.ToInput(),ct)));
- g.MapDelete("/{id:guid}/elements/{elementId:guid}",async(Guid id,Guid elementId,ProjectService s,CancellationToken ct)=>{await s.RemoveProjectElement(id,elementId,ct);return Results.NoContent();});
- g.MapPost("/{id:guid}/publish",async(Guid id,ProjectService s,CancellationToken ct)=>Results.Ok(await s.PublishProject(id,ct)));
- g.MapGet("/{id:guid}/owner",async(Guid id,ProjectService s,CancellationToken ct)=>Results.Ok(await s.GetProjectForOwner(id,ct)));
- g.MapGet("/{id:guid}/public",async(Guid id,ProjectService s,CancellationToken ct)=>Results.Ok(await s.GetPublicProject(id,ct))).AllowAnonymous();
- g.MapGet("/published",async(ProjectService s,CancellationToken ct)=>Results.Ok(await s.ListPublishedProjects(ct))).AllowAnonymous();return app;}
+    public static IEndpointRouteBuilder MapProjectEndpoints(
+        this IEndpointRouteBuilder endpoints)
+    {
+        var projects = endpoints.MapGroup("/api/projects").RequireAuthorization();
+
+        projects.MapPost("/", CreateProject)
+            .RequireAuthorization(policy => policy.RequireRole("Homeowner", "Admin"));
+        projects.MapPut("/{projectId:guid}", UpdateProject);
+        projects.MapPost("/{projectId:guid}/elements", AddProjectElement);
+        projects.MapPut("/{projectId:guid}/elements/{elementId:guid}", UpdateProjectElement);
+        projects.MapDelete("/{projectId:guid}/elements/{elementId:guid}", RemoveProjectElement);
+        projects.MapPost("/{projectId:guid}/publish", PublishProject);
+        projects.MapGet("/{projectId:guid}/owner", GetProjectForOwner);
+        projects.MapGet("/{projectId:guid}/public", GetPublicProject).AllowAnonymous();
+        projects.MapGet("/published", ListPublishedProjects).AllowAnonymous();
+
+        return endpoints;
+    }
+
+    private static async Task<IResult> CreateProject(
+        ProjectRequest request,
+        IValidator<ProjectRequest> validator,
+        ProjectService projectService,
+        CancellationToken cancellationToken)
+    {
+        await validator.ValidateAndThrowAsync(request, cancellationToken);
+        var project = await projectService.CreateProject(
+            request.Title, request.RoomImageUrl, cancellationToken);
+        return Results.Created($"/api/projects/{project.Id.Value}/owner", project);
+    }
+
+    private static async Task<IResult> UpdateProject(
+        Guid projectId,
+        ProjectRequest request,
+        ProjectService projectService,
+        CancellationToken cancellationToken)
+    {
+        var project = await projectService.UpdateProject(
+            projectId, request.Title, request.RoomImageUrl, cancellationToken);
+        return Results.Ok(project);
+    }
+
+    private static async Task<IResult> AddProjectElement(
+        Guid projectId,
+        ProjectElementRequest request,
+        ProjectService projectService,
+        CancellationToken cancellationToken)
+    {
+        var element = await projectService.AddProjectElement(
+            projectId, request.ToApplicationInput(), cancellationToken);
+        return Results.Ok(element);
+    }
+
+    private static async Task<IResult> UpdateProjectElement(
+        Guid projectId,
+        Guid elementId,
+        ProjectElementRequest request,
+        ProjectService projectService,
+        CancellationToken cancellationToken)
+    {
+        var element = await projectService.UpdateProjectElement(
+            projectId, elementId, request.ToApplicationInput(), cancellationToken);
+        return Results.Ok(element);
+    }
+
+    private static async Task<IResult> RemoveProjectElement(
+        Guid projectId,
+        Guid elementId,
+        ProjectService projectService,
+        CancellationToken cancellationToken)
+    {
+        await projectService.RemoveProjectElement(projectId, elementId, cancellationToken);
+        return Results.NoContent();
+    }
+
+    private static async Task<IResult> PublishProject(
+        Guid projectId,
+        ProjectService projectService,
+        CancellationToken cancellationToken)
+    {
+        var project = await projectService.PublishProject(projectId, cancellationToken);
+        return Results.Ok(project);
+    }
+
+    private static async Task<IResult> GetProjectForOwner(
+        Guid projectId,
+        ProjectService projectService,
+        CancellationToken cancellationToken)
+    {
+        var project = await projectService.GetProjectForOwner(projectId, cancellationToken);
+        return Results.Ok(project);
+    }
+
+    private static async Task<IResult> GetPublicProject(
+        Guid projectId,
+        ProjectService projectService,
+        CancellationToken cancellationToken)
+    {
+        var project = await projectService.GetPublicProject(projectId, cancellationToken);
+        return Results.Ok(project);
+    }
+
+    private static async Task<IResult> ListPublishedProjects(
+        ProjectService projectService,
+        CancellationToken cancellationToken)
+    {
+        var projects = await projectService.ListPublishedProjects(cancellationToken);
+        return Results.Ok(projects);
+    }
 }
