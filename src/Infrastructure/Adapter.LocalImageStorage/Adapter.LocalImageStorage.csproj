@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>InteriorMarketplace.Infrastructure.Adapter.LocalImageStorage</AssemblyName>
+    <RootNamespace>InteriorMarketplace.Infrastructure.Adapter.LocalImageStorage</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Application\Application.Contracts\Application.Contracts.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,48 +1,61 @@
 # InteriorMarketplace
 
-بک‌اند MVP بازار طراحی داخلی با .NET 10 و معماری شش‌ضلعی است. برنامه یک **Modular Monolith** است؛ هر ماژول مرز دامنه و کاربردی مستقل دارد، اما همه در یک Host و یک PostgreSQL اجرا می‌شوند.
+اسکلت backend بازار طراحی داخلی با .NET 10 است. ساختار solution از معماری پروژه Niam پیروی می‌کند و در این مرحله عمداً هیچ مدل دامنه، use case، endpoint، persistence یا integration پیاده‌سازی نشده است.
 
-## معماری
+## ساختار
 
-جهت وابستگی همیشه به داخل است: `Domain <- Application <- Adapters <- Host`. لایه Domain هیچ وابستگی به HTTP، EF Core، JWT یا SDK خارجی ندارد. Application شامل use case و portهاست. آداپتر ورودی Minimal API، DTO و validation را نگه می‌دارد. آداپتر خروجی EF Core، repository، کاربر جاری، ذخیرهٔ محلی تصویر و notification را پیاده می‌کند. `IImageGenerationService` فقط یک port آینده است و در MVP ثبت یا فراخوانی نشده است.
+```text
+src/
+├── Application/
+│   ├── Application/
+│   └── Application.Contracts/
+├── Domain/
+│   └── Domain/
+├── Infrastructure/
+│   ├── Adapter.Http/
+│   ├── Adapter.LocalImageStorage/
+│   ├── Adapter.Notifications/
+│   └── Adapter.PostgreSql/
+├── Host/
+└── client/
 
-ماژول‌های اصلی در `src/Modules/Projects` و `src/Modules/VendorOffers` قرار دارند. `src/Host/InteriorMarketplace.WebApi` تنها composition root است. تست‌های معماری وابسته نبودن Domain به فناوری‌های بیرونی را کنترل می‌کنند.
-
-## اجرا
-
-پیش‌نیازها: .NET SDK 10 و Docker.
-
-```powershell
-docker compose up -d
-dotnet restore
-dotnet run --project src/Host/InteriorMarketplace.WebApi
+test/
+├── Application.UnitTests/
+└── Host.IntegrationTests/
 ```
 
-در Development مقدار `Password=CHANGE_ME` در `appsettings.Development.json` را با رمز Compose (`postgres`) یا secret محلی جایگزین کنید. Swagger در `/swagger` است. در startup migrationها اجرا و در دیتابیس خالی یک مالک، یک فروشنده و پروژهٔ منتشرشده با سه عنصر Sofa، Rug و FloorLamp seed می‌شوند. شناسه مالک `11111111-1111-1111-1111-111111111111` و فروشنده `22222222-2222-2222-2222-222222222222` است.
+## مسئولیت پروژه‌ها
 
-## Migration
+- `Domain`: مدل دامنه، aggregateها، entityها، value objectها و portهای کاملاً دامنه‌ای.
+- `Application.Contracts`: command، query، result و قراردادهایی که adapterها باید پیاده‌سازی کنند.
+- `Application`: handlerهای use case و orchestration برنامه.
+- `Adapter.Http`: ورودی HTTP، endpointها، DTOها، validation و mapping.
+- `Adapter.PostgreSql`: EF Core، DbContext، migration و repositoryها.
+- `Adapter.LocalImageStorage`: پیاده‌سازی محلی ذخیره تصویر.
+- `Adapter.Notifications`: پیاده‌سازی notification.
+- `Host`: composition root و نقطه اجرای برنامه.
 
-```powershell
-dotnet tool install --global dotnet-ef
-dotnet ef migrations add InitialCreate --project src/Modules/Projects/Projects.Adapters.Outbound --startup-project src/Host/InteriorMarketplace.WebApi --output-dir Migrations
-dotnet ef database update --project src/Modules/Projects/Projects.Adapters.Outbound --startup-project src/Host/InteriorMarketplace.WebApi
+## جهت وابستگی
+
+```text
+Domain <- Application.Contracts <- Application <- Adapter.Http <- Host
+                 ^                     ^
+                 └──── Outbound Adapters ────┘
 ```
 
-فرمان‌های Docker: `docker compose up -d` برای شروع، `docker compose logs -f postgres` برای log و `docker compose down` برای توقف. Volume داده را نگه می‌دارد؛ حذف volume فقط با `docker compose down -v` انجام می‌شود.
+Host همه adapterها را کنار هم قرار می‌دهد. Domain نباید به ASP.NET Core، EF Core، JWT، پایگاه‌داده یا SDK خارجی وابسته شود.
 
-## جریان API
+## وضعیت فعلی
 
-برای توسعه از `POST /api/auth/dev-token` با role برابر `Homeowner` یا `Vendor` توکن بگیرید. مالک پروژه را ایجاد می‌کند، عناصر مختصات‌دار را می‌افزاید و منتشر می‌کند. فروشنده فهرست منتشرشده‌ها را می‌بیند و برای هر عنصر یک پیشنهاد Pending می‌سازد. مالک پیشنهادها را می‌بیند و یکی را می‌پذیرد؛ سایر Pendingها رد می‌شوند. نمونه درخواست‌ها در `http/InteriorMarketplace.http` موجود است.
+این repository فقط اسکلت معماری را در خود دارد. قابلیت‌های Projects، Vendor Offers، Identity و Notifications در مرحله بعد و به شکل use caseهای مستقل اضافه خواهند شد.
 
-مختصات اعشاری و نرمال‌شده‌اند: همه مقادیر بین صفر و یک و `X + Width <= 1` و `Y + Height <= 1` هستند. زمان‌ها UTC ذخیره می‌شوند.
+## فرانت‌اند
 
-## فاز AI آینده
+مسیر `src/client` برای اضافه‌شدن repository مستقل فرانت‌اند در مرحله بعد رزرو شده است. روش پیشنهادی برای اتصال آن Git submodule یا Git subtree است تا تاریخچه و چرخه انتشار frontend مستقل باقی بماند.
 
-نقطه اتصال آینده `IImageGenerationService` در BuildingBlocks.Application است. در فاز بعد یک outbound adapter برای ارائه‌دهنده AI و یک use case صریح اضافه می‌شود؛ Domain و API فعلی نیازی به وابستگی مستقیم به SDK آن ارائه‌دهنده نخواهند داشت.
-
-## تست
+## Build
 
 ```powershell
-dotnet build InteriorMarketplace.sln
-dotnet test InteriorMarketplace.sln --no-build
+dotnet restore InteriorMarketplace.sln
+dotnet build InteriorMarketplace.sln --no-restore
 ```

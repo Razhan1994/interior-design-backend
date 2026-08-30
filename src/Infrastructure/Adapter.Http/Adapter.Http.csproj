@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>InteriorMarketplace.Infrastructure.Adapter.Http</AssemblyName>
+    <RootNamespace>InteriorMarketplace.Infrastructure.Adapter.Http</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <ProjectReference Include="..\..\Application\Application\Application.csproj" />
+  </ItemGroup>
+</Project>

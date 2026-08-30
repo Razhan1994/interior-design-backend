@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>InteriorMarketplace.Host.IntegrationTests</AssemblyName>
+    <RootNamespace>InteriorMarketplace.Host.IntegrationTests</RootNamespace>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Host\Host.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>InteriorMarketplace.Host</AssemblyName>
+    <RootNamespace>InteriorMarketplace.Host</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure\Adapter.Http\Adapter.Http.csproj" />
+    <ProjectReference Include="..\Infrastructure\Adapter.LocalImageStorage\Adapter.LocalImageStorage.csproj" />
+    <ProjectReference Include="..\Infrastructure\Adapter.Notifications\Adapter.Notifications.csproj" />
+    <ProjectReference Include="..\Infrastructure\Adapter.PostgreSql\Adapter.PostgreSql.csproj" />
+  </ItemGroup>
+</Project>

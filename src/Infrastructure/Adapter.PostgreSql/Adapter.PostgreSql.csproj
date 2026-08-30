@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>InteriorMarketplace.Infrastructure.Adapter.PostgreSql</AssemblyName>
+    <RootNamespace>InteriorMarketplace.Infrastructure.Adapter.PostgreSql</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Application\Application.Contracts\Application.Contracts.csproj" />
+    <ProjectReference Include="..\..\Domain\Domain\Domain.csproj" />
+  </ItemGroup>
+</Project>

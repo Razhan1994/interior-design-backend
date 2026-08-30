@@ -52,6 +52,7 @@ coverage.*
 
 # .NET tooling
 .dotnet/
+.dotnet-cli/
 .store/
 project.lock.json
 project.fragment.lock.json
