@@ -2,13 +2,13 @@ services:
   postgres:
     image: postgres:17-alpine
     environment:
-      POSTGRES_DB: interior_marketplace
+      POSTGRES_DB: gimli
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
     volumes:
-      - interior_marketplace_pg:/var/lib/postgresql/data
+      - gimli_postgres_data:/var/lib/postgresql/data
 
 volumes:
-  interior_marketplace_pg:
+  gimli_postgres_data:

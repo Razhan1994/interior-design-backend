@@ -1,4 +1,4 @@
-# InteriorMarketplace
+# Gimli
 
 اسکلت backend بازار طراحی داخلی با .NET 10 است. ساختار solution از معماری پروژه Niam پیروی می‌کند و در این مرحله عمداً هیچ مدل دامنه، use case، endpoint، persistence یا integration پیاده‌سازی نشده است.
 
@@ -56,6 +56,6 @@ Host همه adapterها را کنار هم قرار می‌دهد. Domain نبا
 ## Build
 
 ```powershell
-dotnet restore InteriorMarketplace.sln
-dotnet build InteriorMarketplace.sln --no-restore
+dotnet restore Gimli.sln
+dotnet build Gimli.sln --no-restore
 ```
