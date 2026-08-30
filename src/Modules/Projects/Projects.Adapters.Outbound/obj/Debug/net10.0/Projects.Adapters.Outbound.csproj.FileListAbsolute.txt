@@ -1,5 +1,0 @@
-F:\interior\backend\src\Modules\Projects\Projects.Adapters.Outbound\obj\Debug\net10.0\Projects.Adapters.Outbound.csproj.AssemblyReference.cache
-F:\interior\backend\src\Modules\Projects\Projects.Adapters.Outbound\obj\Debug\net10.0\Projects.Adapters.Outbound.GeneratedMSBuildEditorConfig.editorconfig
-F:\interior\backend\src\Modules\Projects\Projects.Adapters.Outbound\obj\Debug\net10.0\Projects.Adapters.Outbound.AssemblyInfoInputs.cache
-F:\interior\backend\src\Modules\Projects\Projects.Adapters.Outbound\obj\Debug\net10.0\Projects.Adapters.Outbound.AssemblyInfo.cs
-F:\interior\backend\src\Modules\Projects\Projects.Adapters.Outbound\obj\Debug\net10.0\Projects.Adapters.Outbound.csproj.CoreCompileInputs.cache

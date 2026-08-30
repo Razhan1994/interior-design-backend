@@ -1,0 +1,84 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+[Aa]rtifacts/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+publish/
+
+# Visual Studio
+.vs/
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+*.csproj.user
+*.vcxproj.user
+
+# Visual Studio Code user-specific files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
+!.vscode/tasks.json
+
+# JetBrains Rider / ReSharper
+.idea/
+*.sln.iml
+_ReSharper*/
+*.DotSettings.user
+
+# Test results and coverage
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+coverage/
+coverage.*
+*.coverage
+*.coveragexml
+*.trx
+
+# NuGet
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+*.nuget.props
+*.nuget.targets
+
+# .NET tooling
+.dotnet/
+.store/
+project.lock.json
+project.fragment.lock.json
+artifacts.json
+
+# Local secrets and environment overrides
+.env
+.env.*
+!.env.example
+secrets.json
+appsettings.Local.json
+appsettings.*.Local.json
+
+# Runtime-generated local files
+logs/
+*.log
+src/Host/InteriorMarketplace.WebApi/wwwroot/images/*
+!src/Host/InteriorMarketplace.WebApi/wwwroot/images/.gitkeep
+
+# Operating systems
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
