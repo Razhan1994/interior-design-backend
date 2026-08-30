@@ -1,0 +1,3 @@
+[submodule "src/client"]
+	path = src/client
+	url = https://github.com/Razhan1994/interior-design-ui.git
