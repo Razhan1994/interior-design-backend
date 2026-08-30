@@ -1,3 +1,3 @@
-namespace InteriorMarketplace.Application.Contracts.Properties;
+namespace Gimli.Application.Contracts.Properties;
 
 public static class AssemblyPointer;

@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
-    <AssemblyName>InteriorMarketplace.Infrastructure.Adapter.LocalImageStorage</AssemblyName>
-    <RootNamespace>InteriorMarketplace.Infrastructure.Adapter.LocalImageStorage</RootNamespace>
+    <AssemblyName>Gimli.Infrastructure.Adapter.LocalImageStorage</AssemblyName>
+    <RootNamespace>Gimli.Infrastructure.Adapter.LocalImageStorage</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

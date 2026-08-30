@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace InteriorMarketplace.Host;
+namespace Gimli.Host;
 
 public sealed class Startup(
     IConfiguration configuration,

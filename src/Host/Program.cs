@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 
-namespace InteriorMarketplace.Host;
+namespace Gimli.Host;
 
 public static class Program
 {

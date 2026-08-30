@@ -1,3 +1,3 @@
-namespace InteriorMarketplace.Domain.Properties;
+namespace Gimli.Domain.Properties;
 
 public static class AssemblyPointer;

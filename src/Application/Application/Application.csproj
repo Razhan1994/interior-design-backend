@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
-    <AssemblyName>InteriorMarketplace.Application</AssemblyName>
-    <RootNamespace>InteriorMarketplace.Application</RootNamespace>
+    <AssemblyName>Gimli.Application</AssemblyName>
+    <RootNamespace>Gimli.Application</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,3 +1,3 @@
-namespace InteriorMarketplace.Infrastructure.Adapter.Http.Properties;
+namespace Gimli.Infrastructure.Adapter.Http.Properties;
 
 public static class AssemblyPointer;

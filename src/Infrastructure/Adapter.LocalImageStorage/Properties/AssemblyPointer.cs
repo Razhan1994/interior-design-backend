@@ -1,3 +1,3 @@
-namespace InteriorMarketplace.Infrastructure.Adapter.LocalImageStorage.Properties;
+namespace Gimli.Infrastructure.Adapter.LocalImageStorage.Properties;
 
 public static class AssemblyPointer;
